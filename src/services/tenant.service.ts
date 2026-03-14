@@ -1,7 +1,7 @@
 import { EntityManager, Repository } from "typeorm";
 import { Tenant } from "../models/tenant.model";
 import {TenantInterface} from "../interfaces/tenant.interface";
-import { AppDataSource } from "../config/data-source.config";
+
 //create query 
 
 //const Query = AppDataSource.createQueryBuilder();

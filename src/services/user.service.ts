@@ -32,6 +32,7 @@ export class UserService {
                        ...user,
                        password: await bcrypt.hash(user.password, 10),
                        tenantId: tenantId,
+                       tenant: { id: tenantId },
                        otp: randomNumber,
                        otpExpires: otpExpires
                     })
@@ -89,7 +90,8 @@ export class UserService {
                     .insert()
                     .into(User)
                     .values({
-                       ...userData,    
+                       ...userData,   
+                       tenant: { id: userData.tenantId },
                     })
                     .execute()
                 

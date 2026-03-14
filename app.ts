@@ -5,6 +5,7 @@ import reflectMetadata from "reflect-metadata";
 import {AppDataSource} from "./src/config/data-source.config";
 import tenantRoutes from './src/routes/tenant.routes'
 import userRoutes from './src/routes/user.routes'
+import projectRoutes from './src/routes/project.routes'
 
 dotenv.config();
 
@@ -30,6 +31,9 @@ app.use("/tenant", tenantRoutes);
 
 //user routes
 app.use("/user", userRoutes);
+
+//project routes
+app.use("/project", projectRoutes);
 
 //initialize the database
 AppDataSource.initialize()
