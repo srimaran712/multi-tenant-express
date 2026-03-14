@@ -38,9 +38,14 @@ app.use("/project", projectRoutes);
 //initialize the database
 AppDataSource.initialize()
     .then(() => {
-        console.log("Database initialized");
+        console.log("✅ Database connected successfully!");
+        //console.log(`📊 Database: ${AppDataSource.options.database}`);
+        //console.log(`🌐 Host: ${process.env.DB_HOST}:${process.env.DB_PORT}`);
     })
-    .catch((error) => console.log(error));
+    .catch((error) => {
+        console.error("❌ Database connection failed:", error);
+        console.error("🔧 Check your environment variables in .env file");
+    });
 
 export default app;
 

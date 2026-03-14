@@ -1,0 +1,1 @@
+{"version":3,"file":"addUser.interface.d.ts","sourceRoot":"","sources":["../../../src/interfaces/addUser.interface.ts"],"names":[],"mappings":"AAAA,OAAO,EAAE,QAAQ,EAAE,MAAM,sBAAsB,CAAC;AAEhD,MAAM,WAAW,UAAU;IACvB,IAAI,EAAE,MAAM,CAAC;IACb,KAAK,EAAE,MAAM,CAAC;IACd,IAAI,EAAE,QAAQ,CAAC;IACf,QAAQ,EAAE,MAAM,CAAC;CACpB"}
