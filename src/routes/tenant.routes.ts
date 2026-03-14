@@ -34,9 +34,7 @@ router.post('/v1/verify-otp', tenantController.verifyAdminWithOtp);
 
 
 
-//admin can create other users
 
-router.post('/v1/user', authMiddleware, adminMiddleware);
 
 export default router;
 

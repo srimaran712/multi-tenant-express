@@ -35,8 +35,26 @@ export class TenantController {
        
     }
 
-    async verifyAdminWithOtp(req: Request, res: Response) {
+    verifyAdminWithOtp=async (req: Request, res: Response) => {
+        try{
+       const {tenantId,otp} = req.body
+
+       if(!tenantId || !otp){
+        return res.status(400).json({ message: "Tenant ID and OTP are required" });
+       }
+
+       const result = await AppDataSource.transaction(async (transactionalEntityManager)=>{
+        // Verify OTP logic here
+         const otpVerification = await this.userService.verifyOtp(tenantId, otp, transactionalEntityManager)
+         
+       })
+       res.status(200).json({ message: "OTP verified successfully" });
+
+
+        }catch(err){
+            res.status(500).json({ message: "Internal server error",err:(err as Error).message });
+        }
      //   const tenant = await this.tenantService(req.params.id)
-        res.json({ message: "Tenant verified" });
+     //   res.json({ message: "Tenant verified" });
     }
 }

@@ -4,6 +4,7 @@ import dotenv from "dotenv";
 import reflectMetadata from "reflect-metadata";
 import {AppDataSource} from "./src/config/data-source.config";
 import tenantRoutes from './src/routes/tenant.routes'
+import userRoutes from './src/routes/user.routes'
 
 dotenv.config();
 
@@ -26,6 +27,9 @@ app.get("/health", (req: Request, res: Response) => {
 
 //tenant routes
 app.use("/tenant", tenantRoutes);
+
+//user routes
+app.use("/user", userRoutes);
 
 //initialize the database
 AppDataSource.initialize()
