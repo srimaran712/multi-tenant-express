@@ -3,6 +3,7 @@ import Cors from "cors";
 import dotenv from "dotenv";
 import reflectMetadata from "reflect-metadata";
 import {AppDataSource} from "./src/config/data-source.config";
+import tenantRoutes from './src/routes/tenant.routes'
 
 dotenv.config();
 
@@ -22,6 +23,9 @@ app.use(Cors({
 app.get("/health", (req: Request, res: Response) => {
     res.send("I'm healthy");
 });
+
+//tenant routes
+app.use("/tenant", tenantRoutes);
 
 //initialize the database
 AppDataSource.initialize()

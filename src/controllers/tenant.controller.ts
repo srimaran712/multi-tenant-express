@@ -2,6 +2,7 @@ import { Request, Response } from "express"
 import { TenantService } from "../services/tenant.service"
 import { UserService } from "../services/user.service"
 import { AppDataSource } from "../config/data-source.config"
+import { UserRole } from "../models/user.model"
 import * as bcrypt from "bcryptjs"
 
 export class TenantController {
@@ -13,17 +14,23 @@ export class TenantController {
         this.userService = new UserService()
     }
     //super level 
-    async createTenantWithAdmin(req: Request, res: Response) {
-
+     createTenantWithAdmin=async (req: Request, res: Response)=> {
+        try{
+        const {companyName,name, email, password} = req.body
         const result= await AppDataSource.transaction(async (transactionalEntityManager)=>{
 
-        const tenant = await this.tenantService.createTenant(req.body,transactionalEntityManager)
-      //  const user = await this.userService.createUser(req.body,transactionalEntityManager)
+        const tenant = await this.tenantService.createTenant({name: companyName},transactionalEntityManager)
+        console.log(tenant)
+        const user = await this.userService.createUser({name, email, password, role: UserRole.ADMIN},transactionalEntityManager,tenant)
 
       
         })
 
          res.status(200).json({ message: "Tenant created", result });
+        }catch(error){
+            res.status(500).json({ message: "Internal server error",err:(error as Error).message });
+        }
+        
 
        
     }

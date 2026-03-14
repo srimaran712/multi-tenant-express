@@ -32,7 +32,7 @@ export class TenantService {
             .execute()
    //console log the new tenant
         console.log(newTenant)
-        return newTenant.raw.insertId
+        return newTenant.raw[0].id
     
     }
     

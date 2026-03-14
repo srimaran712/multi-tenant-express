@@ -29,10 +29,10 @@ export class User {
     isVerified!: boolean
 
     @Column({nullable:true})
-    otp!: number | null
+    otp!: number
 
     @Column({nullable:true})
-    otpExpires!: Date | null
+    otpExpires!: Date
     
     @ManyToOne(() => Tenant, (tenant) => tenant.users)
     tenant!: Tenant
